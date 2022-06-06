@@ -17,29 +17,27 @@
 
 #include <Firebase_ESP_Client.h>
 
-// Provide the token generation process info.
+// Fornece as informações do processo de geração de token.
 #include <addons/TokenHelper.h>
 
-// Provide the RTDB payload printing info and other helper functions.
+// Fornece as informações de impressão da carga útil do RTDB e outras funções auxiliares.
 #include <addons/RTDBHelper.h>
 
-/* 1. Define the WiFi credentials */
+/* 1. Define as credenciais de acesso do WiFi */
 #define WIFI_SSID "CLARO_2GCB44AC"
 #define WIFI_PASSWORD "13@Ca0059740$@"
 
-// For the following credentials, see examples/Authentications/SignInAsUser/EmailPassword/EmailPassword.ino
-
-/* 2. Define the API Key */
+/* 2. Define a API Key do projeto no Firebase */
 #define API_KEY "AIzaSyAh2INViHJh0_YgXS2StTXpz9oo2nHyZcM"
 
-/* 3. Define the RTDB URL */
-#define DATABASE_URL "openponic-mvp-default-rtdb.firebaseio.com" //<databaseName>.firebaseio.com or <databaseName>.<region>.firebasedatabase.app
+/* 3. Define a URL para o RTDB (Real Time Database) */
+#define DATABASE_URL "openponic-mvp-default-rtdb.firebaseio.com"
 
-/* 4. Define the user Email and password that alreadey registerd or added in your project */
+/* 4. Define o usuário e senha para acesso ao projeto do Firebase */
 #define USER_EMAIL "contato@yago.dev.br"
 #define USER_PASSWORD "1qaz@WSX"
 
-// Define Firebase Data object
+// Define o objeto (estruct) do Firebase
 FirebaseData fbdo;
 
 FirebaseAuth auth;
@@ -66,14 +64,14 @@ void setup()
 
   Serial.printf("Firebase Client v%s\n\n", FIREBASE_CLIENT_VERSION);
 
-  /* Assign the api key (required) */
+  /* Atribuir a chave de API (obrigatório) */
   config.api_key = API_KEY;
 
-  /* Assign the user sign in credentials */
+  /* Atribui as credenciais de acesso do usuário*/
   auth.user.email = USER_EMAIL;
   auth.user.password = USER_PASSWORD;
 
-  /* Assign the RTDB URL (required) */
+  /* Atribui a URL do RTDB (obrigatório) */
   config.database_url = DATABASE_URL;
 
   /* Assign the callback function for the long running token generation task */
